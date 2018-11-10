@@ -1,17 +1,17 @@
 function typeUtil(obj) {
-    function getType(obj){
+    function getType(obj) {
         let str = Object.prototype.toString.call(obj);
         return str.split('object')[1].split(']')[0].trim().toLowerCase();
-    } 
+    }
     return {
-        isObject(){
-            return getType(obj)==='object';
+        isObject() {
+            return getType(obj) === 'object';
         },
-        isArray(){
-            return getType(obj)==='array';
+        isArray() {
+            return getType(obj) === 'array';
         },
         getType
-    }
+    };
 }
 
 let pushEncodedKeyValuePair = (pairs, key, val) => {
@@ -48,11 +48,13 @@ export default function (object) {
         throw new Error('[error] 数据不是`Object`类型');
         return object;
     }
+
     let pairs = [];
     for (let key in object) {
         if (object.hasOwnProperty(key)) {
             pushEncodedKeyValuePair(pairs, key, object[key]);
         }
+
     }
     return pairs.join('&');
 }

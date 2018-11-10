@@ -9,10 +9,10 @@ export default function (config, pathConfig) {
     if (pathConfig && typeof pathConfig === 'object') {
         Object.keys(pathConfig).forEach(key => {
             let path = pathConfig[key];
-            api[key] = async (data, options)=> {
+            api[key] = async (data, options) => {
                 return await api(path, data, options);
             };
-            
+
         });
     }
 
